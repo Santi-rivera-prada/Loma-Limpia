@@ -3,6 +3,8 @@ import { useAuthContext } from '@/hooks/useAuthContext'
 import { useNavigate } from 'react-router-dom'
 import { loginUserService } from '@/services/userServices'
 import '@/styles/form.css'
+import '@/styles/estilos-subpaginados.css'
+import logo from '@/assets/images/logo.jpg'// Asegúrate de que la ruta es correcta
 
 const Login = () => {
   const { login } = useAuthContext()
@@ -35,11 +37,12 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <img
           className='mb-4'
-          src='https://i.pinimg.com/736x/bf/fe/42/bffe420797a4bc51b799ebc6970d7093.jpg'
-          alt=''
+          src={logo}
+          alt='logo'
           width={150}
           height={150}
         />
+
         <h1 className='h3 mb-3 fw-normal'>Please sign in</h1>
         <div className='form-floating'>
           <input

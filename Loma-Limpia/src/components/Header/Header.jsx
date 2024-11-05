@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import './header.scss'
+import logo from '@/assets/images/logo.jpg'
 
 const Header = () => {
   const { isAuth, logout } = useAuthContext()
@@ -20,7 +21,7 @@ const Header = () => {
       <div className='container'>
         <NavLink className='navbar-brand' to='/'>
           <img
-            src='https://i.pinimg.com/736x/bf/fe/42/bffe420797a4bc51b799ebc6970d7093.jpg'
+            src={logo}
             alt='LOGO'
             style={{ width: '100%', height: '200px', borderRadius: '100px', display: 'grid', justifyContent: 'start' }}
           />

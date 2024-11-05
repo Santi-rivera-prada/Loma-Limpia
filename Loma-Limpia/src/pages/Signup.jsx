@@ -2,6 +2,7 @@ import useForm from '@/hooks/useForm'
 import { useNavigate } from 'react-router-dom'
 import { registerUserService } from '@/services/userServices'
 import '@/styles/form.css'
+import logo from '@/assets/images/logo.jpg'
 
 const Signup = () => {
   // usamos el hook useNavigate para redireccionar al usuario
@@ -35,7 +36,7 @@ const Signup = () => {
   return (
     <main className='form-signin w-100 m-auto'>
       <form onSubmit={handleSubmit}>
-        <img className='mb-4' src='https://i.pinimg.com/736x/bf/fe/42/bffe420797a4bc51b799ebc6970d7093.jpg' alt='' width='150' height='150' />
+        <img className='mb-4' src={logo} alt='' width='150' height='150' />
         <h1 className='h3 mb-3 fw-normal'>Please sign up</h1>
 
         <div className='form-floating'>
