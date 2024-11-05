@@ -1,0 +1,18 @@
+/* Home.css */
+.carousel-item img {
+    max-height: 400px;
+    object-fit: cover;
+  }
+  
+  .card {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .bg-success {
+    background: linear-gradient(45deg, #56ab2f, #a8e063);
+  }
+  
