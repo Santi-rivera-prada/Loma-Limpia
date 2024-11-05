@@ -1,5 +1,6 @@
 para actualizar mi sitio web es:
 * npm run build
+* $env:Path += ";C:\Users\santi\npm-global"
 * netlify deploy --prod
 
 listo seria todo.
