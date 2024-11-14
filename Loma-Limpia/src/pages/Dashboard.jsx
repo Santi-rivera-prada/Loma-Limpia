@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import { Card, Button } from 'react-bootstrap'
+import { getSingleUserService } from '@/services/userServices' // Importa tu servicio para obtener un usuario
 
 const Dashboard = () => {
   const { userPayload } = useAuthContext()
@@ -9,20 +10,26 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      try {
-        const response = await fetch(`https://ecomerce-i14z.onrender.com/users/${userPayload.id}`)
-        if (response.status === 200) {
-          const data = await response.json()
-          setUserData(data)
-        } else {
-          console.error('Error al obtener datos del usuario')
+      if (userPayload?.id) {
+        try {
+          // Utilizamos el servicio de Axios para obtener los datos del usuario
+          const response = await getSingleUserService(userPayload.id) // Asegúrate de que este servicio esté correctamente configurado
+          if (response.status === 200) { // Verificamos si la respuesta es correcta
+            setUserData(response.data)
+            console.log('Datos del usuario:', response.data) // Log para verificar la respuesta
+          } else {
+            console.error('Error al obtener datos del usuario, estado:', response.status)
+          }
+        } catch (error) {
+          console.error('Ocurrió un error en Dashboard:', error.message)
         }
-      } catch (error) {
-        console.error('Ocurrió un error en Dashboard:', error.message)
+      } else {
+        console.warn('No hay ID de usuario disponible en userPayload')
       }
     }
+
     fetchUserData()
-  }, [userPayload.id])
+  }, [userPayload?.id]) // Solo se ejecuta si `userPayload.id` cambia
 
   return (
     <div className='container mt-5'>
@@ -35,16 +42,14 @@ const Dashboard = () => {
             ? (
               <>
                 <Card.Text>
-                  <strong>Nombre:</strong> {userData.name}
+                  <strong>Nombre:</strong> {userData.first_name || 'No disponible'} {userData.last_name || ''}
                 </Card.Text>
                 <Card.Text>
-                  <strong>Género:</strong> {userData.gender}
+                  <strong>Género:</strong> {userData.gender || 'No disponible'}
                 </Card.Text>
                 <Card.Text>
-                  <strong>Correo Electrónico:</strong> {userData.email}
+                  <strong>Correo Electrónico:</strong> {userData.email || 'No disponible'}
                 </Card.Text>
-                {userData.first_name && <h2>{userData.first_name}</h2>}
-                {userData.last_name && <h2>{userData.last_name}</h2>}
               </>
               )
             : (

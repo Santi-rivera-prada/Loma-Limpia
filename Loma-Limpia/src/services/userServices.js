@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'https://ecomerce-i14z.onrender.com'
+const BASE_URL = 'http://localhost:5173/api/register'
 
 // Referencia: https://stackoverflow.com/questions/71989146/axios-instance-not-getting-the-token-from-local-storage-on-first-call-react-js
 // Si existe un token, inyectalo en la cabecera de la petición

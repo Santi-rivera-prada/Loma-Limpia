@@ -1,4 +1,4 @@
-import { useAuthContext } from "../hooks/useAuthContext" 
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const Secret = () => {
   const { userPayload } = useAuthContext()
@@ -7,7 +7,7 @@ const Secret = () => {
     <>
       <h1>Secret</h1>
       {userPayload?.role === 'ADMIN'
-        ? <h2>Hola ADMIN</h2>
+        ? <h2>Hola ADMIN 😁</h2>
         : <h2>Hola CUSTOMER</h2>}
 
       {
